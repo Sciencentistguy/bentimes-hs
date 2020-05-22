@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 96754bab8d7c169da76d7345000e45d08966b0848cab7522dad7172215d1cd43
+-- hash: a4cee15a8b7e304cc9259e09e65d5dde94694776df941cdce7fb7be00ae7e529
 
 name:           bentimes
 version:        0.1.0.0
@@ -15,7 +15,6 @@ author:         Author name here
 maintainer:     example@example.com
 copyright:      2020 Author name here
 license:        BSD3
-license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
     README.md
@@ -27,13 +26,14 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      Bentimes
   other-modules:
       Paths_bentimes
   hs-source-dirs:
       src
   build-depends:
       base >=4.7 && <5
+    , time
   default-language: Haskell2010
 
 executable bentimes-exe
@@ -46,6 +46,7 @@ executable bentimes-exe
   build-depends:
       base >=4.7 && <5
     , bentimes
+    , time
   default-language: Haskell2010
 
 test-suite bentimes-test
@@ -59,4 +60,5 @@ test-suite bentimes-test
   build-depends:
       base >=4.7 && <5
     , bentimes
+    , time
   default-language: Haskell2010

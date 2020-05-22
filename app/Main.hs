@@ -1,6 +1,10 @@
 module Main where
 
-import Lib
+import           Bentimes
+import qualified Data.Time as Time
 
-main :: IO ()
-main = someFunc
+main :: IO()
+main = do
+    t <- Time.getCurrentTime
+    lt <- Time.utcToLocalZonedTime t
+    print lt
