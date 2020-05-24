@@ -6,8 +6,12 @@ import           System.Random
 main :: IO ()
 
 main = do
-    print "temp"
-
+    bools <- randomBools
+    ints <- randomInts 3
+    let relative = getRelative $ head bools
+    let interval = getInterval $ head ints
+    time <- getTime
+    print $ getBentime relative interval time
 
 -- |Generates an infinite list of random booleans
 randomBools :: IO [Bool]
@@ -20,8 +24,8 @@ randomInts a =  randomRs (0, a) <$> getStdGen
 
 
 -- |Returns the current time of day as an IO (hours, minutes)
-getTimeInts :: Integral a => IO (a, a)
-getTimeInts = do
+getTime :: IO Time
+getTime = do
     tz <- Time.getCurrentTimeZone
     time <- Time.getCurrentTime
     let zone_diff_seconds = Time.timeZoneMinutes tz * 60
@@ -29,9 +33,3 @@ getTimeInts = do
     let hours = seconds / 3600
     let mins = floor $ (hours - fromIntegral (floor $ seconds / 3600) ) * 60
     return (floor hours `mod` 12, mins)
-
-
--- TODO:
--- a function that takes true or false and returns an interval to or past
--- a function that takes a number 0,1,2,3 and returns (ten quarter twentyfive half)
--- a function that takes a (to/past) and a (ten quarter twentyfive half) and returns a string
